@@ -1,0 +1,60 @@
+.orders-container{
+min-height:90vh;
+width: 208vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+background: linear-gradient(135deg,#73a8f8,#1a42a0);
+padding:40px;
+}
+
+.orders-card{
+background:linear-gradient(180deg,#0f72ce,#18508d);
+padding:40px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+width:100%;
+max-width:500px;
+}
+
+.orders-card h2{
+text-align:center;
+margin-bottom:25px;
+color: black;
+}
+
+.orders-form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.orders-form input,
+.orders-form textarea,
+.orders-form select{
+padding:12px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+.orders-form textarea{
+resize:none;
+height:80px;
+}
+
+.orders-form button{
+padding:12px;
+border:none;
+background:#1C75B0;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.orders-form button:hover{
+background:#155d8b;
+}

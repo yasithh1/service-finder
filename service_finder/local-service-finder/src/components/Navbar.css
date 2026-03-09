@@ -1,0 +1,47 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(62, 169, 246);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  margin-right: -20.3%;
+  width: 142%;
+}
+
+.logo img {
+  width: 80%;
+  height: auto;
+  margin-top: 2%;
+  max-width: 100px;
+}
+
+
+.auth-toggle {
+  display: inline-flex;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  padding: 2px;
+  margin-right: 6%;
+}
+
+.toggle-btn {
+  padding: 10px 30px;
+  border: none;
+  border-radius:20;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.3s ease;
+}
+
+/* Active button */
+.toggle-btn.active {
+  background-color: #3b82f6;   /* blue */
+  color: black;
+}
+
+/* Inactive button */
+.toggle-btn:not(.active) {
+  background-color: #d1d5db;   /* light gray */
+  color: black;
+}

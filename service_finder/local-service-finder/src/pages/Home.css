@@ -1,0 +1,23 @@
+/* Home Page Main Container */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Optional: Global Section Spacing */
+section {
+  width: 100%;
+}
+
+/* Optional: Add Smooth Font Look */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+/* Optional: Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,64 @@
+.update-container{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#165e72;
+}
+
+.update-card{
+  width:700px;
+  padding:40px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#4da7c7,#2f7f9d);
+  color:white;
+}
+
+.update-card h2{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.update-card hr{
+  margin-bottom:30px;
+}
+
+.form-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.form-row input{
+  width:60%;
+  padding:8px;
+  border:none;
+  border-radius:4px;
+}
+
+.image-preview{
+  display:flex;
+  justify-content:center;
+  margin-top:10px;
+}
+
+.image-preview img{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.update-btn-container{
+  display:flex;
+  justify-content:center;
+  margin-top:30px;
+}
+
+.update-btn-container button{
+  padding:8px 20px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
