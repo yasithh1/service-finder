@@ -2,18 +2,43 @@ import "./Signin.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/finder_logo.png";
+import { signin } from "../services/authService";
 
 function Signin() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleSignin = (e) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username && password) {
+
+    try {
+
+      const response = await signin(formData);
+
+      console.log(response.data);
+
+      alert("Login Successful");
       navigate("/dashboard");
+
+    } catch (error) {
+
+      alert("Invalid Email or Password");
+
     }
   };
+
+  
 
   return (
     <div className="signin-page">
@@ -23,22 +48,22 @@ function Signin() {
           <img src={logo} alt="logo" />
         </div>
 
-        <form className="signin-form-ss" onSubmit={handleSignin}>
+        <form className="signin-form-ss" onSubmit={handleLogin}>
 
-          <label>Username :</label>
+          <label>Email :</label>
           <input
             type="text"
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter email"
+            name="email"
+            onChange={handleChange}
           />
 
           <label>Password :</label>
           <input
             type="password"
             placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            onChange={handleChange}
           />
 
           <a href="#" className="forgot">forgot password</a>
