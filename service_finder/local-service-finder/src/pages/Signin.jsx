@@ -4,9 +4,11 @@ import { useState } from "react";
 import logo from "../assets/finder_logo.png";
 import { signin } from "../services/authService";
 
+
 function Signin() {
   const navigate = useNavigate();
 
+  
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -27,6 +29,8 @@ function Signin() {
       const response = await signin(formData);
 
       console.log(response.data);
+      // SAVE ID
+      localStorage.setItem("userId", response.data.id);
 
       alert("Login Successful");
       navigate("/dashboard");

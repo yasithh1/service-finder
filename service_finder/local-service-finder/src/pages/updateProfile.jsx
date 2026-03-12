@@ -1,14 +1,72 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import axios from "axios";
 import "./updateProfile.css";
 
 function UpdateProfile() {
   const [image, setImage] = useState(null);
 
+  const userId = localStorage.getItem("userId");
+  console.log("User ID:", userId);
+
+  const [images, setImages] = useState([]);
+
+  const [formData, setFormData] = useState({
+  email: "",
+  currentPassword: "",
+  newPassword: "",
+  confirmPassword: ""
+ });
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/workers/user/${userId}`)
+      .then((response) => {
+        response.data.user.email
+      });
+  }, [userId]);
+
   const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImage(URL.createObjectURL(file));
+  const file = e.target.files[0];
+  if (file) {
+    setImage(URL.createObjectURL(file));
+    setImages([file]); // store real file
+  }
+};
+
+  const handleUpdate = async () => {
+
+    if(formData.newPassword !== formData.confirmPassword){
+      alert("Passwords do not match");
+      return;
     }
+
+    const data = new FormData();
+    
+    data.append("email", formData.email);
+    data.append("currentPassword", formData.currentPassword);
+    data.append("newPassword", formData.newPassword);
+
+    if(images.length > 0){
+      data.append("profile_image", images[0]);
+    }
+
+    try {
+
+      await axios.put(
+        `http://localhost:8080/api/workers/update-profile/${userId}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        }
+      );
+
+      alert("Profile Updated");
+
+    } catch (error) {
+      console.error(error);
+    }
+
   };
 
   const handleSubmit = (e) => {
@@ -27,22 +85,34 @@ function UpdateProfile() {
 
           <div className="form-row">
             <label>Email :</label>
-            <input type="email" required />
+            <input type="email" 
+             value={formData.email}
+             onChange={(e)=>setFormData({...formData, email:e.target.value})}
+             required />
           </div>
 
           <div className="form-row">
             <label>Current Password :</label>
-            <input type="password" required />
+            <input type="password" 
+            value={formData.currentPassword}
+            onChange={(e)=>setFormData({...formData, currentPassword:e.target.value})}
+            required />
           </div>
 
           <div className="form-row">
             <label>New Password :</label>
-            <input type="password" required />
+            <input type="password" 
+            value={formData.newPassword}
+            onChange={(e)=>setFormData({...formData, newPassword:e.target.value})}
+            required />
           </div>
 
           <div className="form-row">
             <label>Confirm Password :</label>
-            <input type="password" required />
+            <input type="password" 
+            value={formData.confirmPassword}
+            onChange={(e)=>setFormData({...formData, confirmPassword:e.target.value})}
+            required />
           </div>
 
           <div className="form-row">
@@ -57,7 +127,7 @@ function UpdateProfile() {
           )}
 
           <div className="update-btn-container">
-            <button type="submit">Update</button>
+            <button type="submit" onClick={handleUpdate}>Update</button>
           </div>
 
         </form>

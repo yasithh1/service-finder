@@ -16,7 +16,7 @@ function App() {
   <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<WDashboard />} />
+        <Route path="/dashboard" element={<WDashboard />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/update-service" element={<UpdateService />} />

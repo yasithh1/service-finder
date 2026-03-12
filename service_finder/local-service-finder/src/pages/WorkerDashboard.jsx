@@ -24,6 +24,7 @@ function WorkerDashboard({ workerName = 'Petter' }) {
 
   const handleLogout = () => {
     console.log('Logout clicked');
+    navigate("/");
   };
 
   return (

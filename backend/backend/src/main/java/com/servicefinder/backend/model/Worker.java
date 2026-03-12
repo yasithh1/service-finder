@@ -1,6 +1,7 @@
 package com.servicefinder.backend.model;
 
 import jakarta.persistence.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Worker {
@@ -29,13 +30,6 @@ public class Worker {
         this.phone = phone;
     }
 
-    public String getProfileImage() {
-        return profileImage;
-    }
-
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
-    }
 
     public String getDescription() {
         return description;
@@ -90,6 +84,14 @@ public class Worker {
 
     @Column(name="full_name")
     private String full_name;
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
 
     private String profileImage;
     private String description;

@@ -1,10 +1,9 @@
-.orders-container{
+.add-orders-container{
 min-height:90vh;
-width: 208vh;
+width: 204vh;
 display:flex;
 justify-content:center;
 align-items:center;
-
 background: linear-gradient(135deg,#73a8f8,#1a42a0);
 padding:40px;
 }
